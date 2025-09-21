@@ -88,7 +88,7 @@
 
     /* Video */
     .video-wrap{display:flex;flex-direction:column;gap:16px;align-items:center}
-    video{max-width:100%;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.35)}
+    iframe{width:100%;max-width:720px;height:405px;border:none;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.35)}
 
     /* footer */
     footer{padding:28px 20px;text-align:center;color:#722a2a;background:linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.08));margin-top:60px}
@@ -136,13 +136,9 @@
 
     <section id="video" style="margin-top:36px">
       <h2 style="color:#222;text-align:center">Birthday Video</h2>
-      <p style="color:#555;text-align:center">Add your video file to <code>video/birthday.mp4</code>. The player below will play it locally.</p>
+      <p style="color:#555;text-align:center">Watch Sashvik's special video below:</p>
       <div class="video-wrap">
-        <video id="birthdayVideo" controls>
-          <source src="video/birthday.mp4" type="video/mp4">
-          Your browser does not support the video tag. If you prefer, paste a YouTube link in the HTML where noted.
-        </video>
-        <div style="font-size:14px;color:#444">Tip: Use a short, heartfelt intro message when you share the video with family.</div>
+        <iframe src="https://www.youtube.com/embed/_fXemrttxfM" allowfullscreen></iframe>
       </div>
     </section>
 
