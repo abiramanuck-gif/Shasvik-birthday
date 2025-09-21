@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy 1st Birthday —  Sashvik Prananthav</title>
+  <style>
+    :root{
+      --accent:#ff6b6b;
+      --accent-2:#ffd166;
+      --bg-overlay: rgba(0,0,0,0.45);
+      --card-bg: rgba(255,255,255,0.9);
+      --glass: rgba(255,255,255,0.08);
+      --radius:18px;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body,html{height:100%;margin:0}
+
+    /* NAV */
+    header{
+      position:fixed;left:0;right:0;top:0;z-index:40;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:12px 20px;backdrop-filter: blur(6px);
+      background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:10px;overflow:hidden;flex:0 0 48px}
+    .logo img{width:100%;height:100%;object-fit:cover}
+    nav a{margin:0 10px;color:white;text-decoration:none;font-weight:600}
+    nav a:hover{text-decoration:underline}
+
+    /* HERO */
+    .hero{
+      min-height:75vh;display:flex;align-items:center;justify-content:center;
+      color:white;padding:120px 20px 60px 20px;position:relative;
+      background-image: url('images/cocomelon.jpg');
+      background-size:cover;background-position:center center; 
+    }
+    .hero::after{content:'';position:absolute;inset:0;background:var(--bg-overlay)}
+    .hero-card{position:relative;z-index:2;max-width:980px;padding:34px;border-radius:22px;background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));box-shadow:0 10px 30px rgba(0,0,0,0.35);backdrop-filter: blur(6px);}
+    .title{font-size:clamp(20px,4.2vw,40px);margin:0 0 12px 0;line-height:1.05}
+    .subtitle{font-size:clamp(14px,1.8vw,20px);opacity:0.95;margin:0 0 8px}
+    .name{font-weight:800;font-size:clamp(24px,3.6vw,48px);margin-top:6px;color:var(--accent-2);text-shadow:0 6px 20px rgba(0,0,0,0.45)}
+    .wish-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+    .wish{background:var(--card-bg);padding:10px 14px;border-radius:12px;color:#222;font-weight:600}
+
+    /* sections */
+    main{padding:30px 20px 80px}
+    .container{max-width:1100px;margin:0 auto}
+
+    /* Gallery */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
+    .thumb{position:relative;overflow:hidden;border-radius:12px;background:var(--glass);cursor:pointer}
+    .thumb img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .35s}
+    .thumb:hover img{transform:scale(1.08)}
+    .month-label{position:absolute;left:10px;bottom:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:6px 10px;border-radius:8px;color:white;font-weight:700;font-size:13px}
+
+    /* modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:80;padding:20px}
+    .modal.open{display:flex}
+    .modal-content{max-width:980px;width:100%;border-radius:12px;overflow:hidden;background:#111;padding:12px}
+    .modal-content img{width:100%;height:auto;display:block}
+    .modal-close{position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.12);border:none;color:white;padding:10px;border-radius:10px;cursor:pointer}
+
+    /* Video */
+    .video-wrap{display:flex;flex-direction:column;gap:16px;align-items:center}
+    video{max-width:100%;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.35)}
+
+    /* footer */
+    footer{padding:28px 20px;text-align:center;color:#fff;background:linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.08));margin-top:60px}
+
+    /* responsive tweaks */
+    @media (max-width:640px){.hero{padding:100px 12px 40px}.logo{width:40px;height:40px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo"><img src="images/cocomelon_thumb.jpg" alt="logo"/></div>
+      <div style="color:white"><strong> Sashvik's 1st Birthday</strong><div style="font-size:12px;opacity:0.9">Shasvik Prananthav</div></div>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#video">Video</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-card">
+      <h1 class="title">Happy 1st birthday, my precious boy!</h1>
+      <div class="subtitle">"One year down, a lifetime of love to go."</div>
+      <div class="name"> Sashvik Prananthav</div>
+
+      <div class="wish-list">
+        <div class="wish">"You've filled our hearts with so much love and joy; may your day be as wonderful as you are."</div>
+        <div class="wish">"To my sweet boy, one year of smiles, snuggles, and magic. Happy birthday!"</div>
+      </div>
+
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section id="gallery" style="margin-top:30px">
+      <h2 style="color:#222;margin-bottom:10px">Photo Gallery — Months 1 to 12</h2>
+      <p style="margin-top:0;color:#555">Click a thumbnail to enlarge. Replace the images in <code>images/month1.jpg</code> ... <code>images/month12.jpg</code> with your photos.</p>
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- thumbnails inserted by script -->
+      </div>
+    </section>
+
+    <section id="video" style="margin-top:36px">
+      <h2 style="color:#222">Birthday Video</h2>
+      <p style="color:#555">Add your video file to <code>video/birthday.mp4</code>. The player below will play it locally.</p>
+      <div class="video-wrap">
+        <video id="birthdayVideo" controls>
+          <source src="video/birthday.mp4" type="video/mp4">
+          Your browser does not support the video tag. If you prefer, paste a YouTube link in the HTML where noted.
+        </video>
+        <div style="font-size:14px;color:#444">Tip: Use a short, heartfelt intro message when you share the video with family.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Made with ❤️ for  Sashvik — Happy 1st Birthday!
+  </footer>
+
+  <!-- Modal for gallery -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <button class="modal-close" id="modalClose">Close ✕</button>
+    <div class="modal-content" id="modalContent">
+      <img id="modalImage" src="" alt="Large photo" />
+    </div>
+  </div>
+
+  <script>
+    // Build gallery (1..12)
+    const galleryGrid = document.getElementById('galleryGrid');
+    for(let i=1;i<=12;i++){
+      const div = document.createElement('div');
+      div.className='thumb';
+      div.innerHTML = `
+        <img src="images/month${i}.jpg" alt="Month ${i}" onerror="this.src='images/placeholder.png'" />
+        <div class="month-label">Month ${i}</div>
+      `;
+      div.addEventListener('click', ()=>openModal(i));
+      galleryGrid.appendChild(div);
+    }
+
+    // Modal
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+    function openModal(i){
+      modalImage.src = `images/month${i}.jpg`;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    }
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+    function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); modalImage.src=''; }
+
+    // Smooth scroll for nav
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const id = a.getAttribute('href').slice(1);
+        document.getElementById(id).scrollIntoView({behavior:'smooth'});
+      });
+    });
+  </script>
+</body>
+</html>
