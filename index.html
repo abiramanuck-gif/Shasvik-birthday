@@ -17,83 +17,49 @@
     *{box-sizing:border-box}
     body,html{height:100%;margin:0;background:linear-gradient(180deg,#fdf6f6,#fff5f5);}
 
-    /* NAV */
-    header{
-      position:fixed;left:0;right:0;top:0;z-index:40;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:12px 20px;backdrop-filter: blur(6px);
-      background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.3));
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-      color:#722a2a;
-    }
+    header{position:fixed;left:0;right:0;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;backdrop-filter: blur(6px);background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.3));box-shadow: 0 6px 18px rgba(0,0,0,0.15);color:#722a2a;}
     .brand{display:flex;gap:12px;align-items:center}
     .logo{width:48px;height:48px;border-radius:10px;overflow:hidden;flex:0 0 48px}
     .logo img{width:100%;height:100%;object-fit:cover}
     nav a{margin:0 10px;color:#722a2a;text-decoration:none;font-weight:600}
     nav a:hover{text-decoration:underline}
 
-    /* HERO */
-    .hero{
-      min-height:75vh;display:flex;align-items:center;justify-content:center;
-      color:white;padding:120px 20px 60px 20px;position:relative;
-      background-image: url('images/cocomelon.jpg');
-      background-size:cover;background-position:center center; 
-      text-align:center;
-    }
+    .hero{min-height:75vh;display:flex;align-items:center;justify-content:center;color:white;padding:120px 20px 60px 20px;position:relative;background-image: url('images/cocomelon.jpg');background-size:cover;background-position:center center;text-align:center;}
     .hero::after{content:'';position:absolute;inset:0;background:var(--bg-overlay)}
     .hero-card{position:relative;z-index:2;max-width:980px;padding:34px;border-radius:22px;background:linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));box-shadow:0 10px 30px rgba(0,0,0,0.35);backdrop-filter: blur(6px);text-align:center;}
     .title{font-size:clamp(20px,4.2vw,40px);margin:0 0 12px 0;line-height:1.05}
     .subtitle{font-size:clamp(14px,1.8vw,20px);opacity:0.95;margin:0 0 8px}
-
-    /* Animated hero name */
-    .name{
-      font-weight:900;
-      font-size:clamp(28px,4vw,56px);
-      margin-top:10px;
-      background: linear-gradient(90deg, #FFD700, #FFA500, #FF4500);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.35);
-      font-family: 'Brush Script MT', cursive;
-      letter-spacing: 2px;
-      animation: shimmer 2.5s infinite;
-      background-size: 200% 100%;
-    }
-
-    @keyframes shimmer {
-      0%{background-position:200% 0%}
-      100%{background-position:-200% 0%}
-    }
+    .name{font-weight:900;font-size:clamp(28px,4vw,56px);margin-top:10px;background: linear-gradient(90deg, #FFD700, #FFA500, #FF4500);-webkit-background-clip: text;-webkit-text-fill-color: transparent;text-shadow: 2px 2px 6px rgba(0,0,0,0.35);font-family: 'Brush Script MT', cursive;letter-spacing: 2px;animation: shimmer 2.5s infinite;background-size: 200% 100%;}
+    @keyframes shimmer {0%{background-position:200% 0%}100%{background-position:-200% 0%}}
 
     .wish-list{margin-top:12px;display:flex;flex-direction:column;gap:8px;align-items:center}
     .wish{background:var(--card-bg);padding:10px 14px;border-radius:12px;color:#222;font-weight:600;max-width:700px}
 
-    /* sections */
     main{padding:30px 20px 80px}
     .container{max-width:1100px;margin:0 auto}
 
-    /* Gallery */
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
-    .thumb{position:relative;overflow:hidden;border-radius:12px;background:var(--glass);cursor:pointer}
+    .thumb{position:relative;overflow:hidden;border-radius:12px;background:var(--glass);cursor:pointer;transition: transform .35s, box-shadow .35s;opacity:0;animation:fadeIn 1s forwards;}
     .thumb img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .35s}
-    .thumb:hover img{transform:scale(1.08)}
+    .thumb:hover{transform:scale(1.05);box-shadow:0 8px 20px rgba(0,0,0,0.35);}
     .month-label{position:absolute;left:10px;bottom:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:6px 10px;border-radius:8px;color:white;font-weight:700;font-size:13px}
+    .month-caption{text-align:center;margin-top:6px;font-weight:600;color:#333}
 
-    /* modal */
+    @keyframes fadeIn {to { opacity:1; }}
+
     .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:80;padding:20px}
     .modal.open{display:flex}
     .modal-content{max-width:980px;width:100%;border-radius:12px;overflow:hidden;background:#111;padding:12px}
     .modal-content img{width:100%;height:auto;display:block}
     .modal-close{position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.12);border:none;color:white;padding:10px;border-radius:10px;cursor:pointer}
 
-    /* Video */
-    .video-wrap{display:flex;flex-direction:column;gap:16px;align-items:center}
-    iframe{width:100%;max-width:720px;height:405px;border:none;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.35)}
+    .video-wrap{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;align-items:flex-start;}
+    .video-card{position:relative;flex:1 1 350px;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.35);transition:transform .35s, box-shadow .35s;}
+    .video-card:hover{transform:scale(1.03);box-shadow:0 12px 35px rgba(0,0,0,0.45);}
+    .video-card iframe{width:100%;height:405px;border:none;display:block;border-radius:14px;}
+    .video-title{text-align:center;font-weight:700;margin-top:6px;color:#222;}
 
-    /* footer */
     footer{padding:28px 20px;text-align:center;color:#722a2a;background:linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.08));margin-top:60px}
-
-    /* responsive tweaks */
     @media (max-width:640px){.hero{padding:100px 12px 40px}.logo{width:40px;height:40px}}
   </style>
 </head>
@@ -115,40 +81,44 @@
       <h1 class="title">Happy 1st birthday, my precious boy!</h1>
       <div class="subtitle">"One year down, a lifetime of love to go."</div>
       <div class="name">Sashvik Prananthav</div>
-
       <div class="wish-list">
         <div class="wish">"You've filled our hearts with so much love and joy; may your day be as wonderful as you are."</div>
         <div class="wish">"To my sweet boy, one year of smiles, snuggles, and magic. Happy birthday!"</div>
       </div>
-
     </div>
   </section>
 
   <main class="container">
-
     <section id="gallery" style="margin-top:30px">
       <h2 style="color:#222;margin-bottom:10px;text-align:center">Photo Gallery — Months 1 to 12</h2>
       <p style="margin-top:0;color:#555;text-align:center">Click a thumbnail to enlarge. Replace the images in <code>images/month1.jpg</code> ... <code>images/month12.jpg</code> with your photos.</p>
-      <div class="gallery-grid" id="galleryGrid">
-        <!-- thumbnails inserted by script -->
-      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
     <section id="video" style="margin-top:36px">
-      <h2 style="color:#222;text-align:center">Birthday Video</h2>
-      <p style="color:#555;text-align:center">Watch Sashvik's special video below:</p>
+      <h2 style="color:#222;text-align:center">Birthday Videos</h2>
+      <p style="color:#555;text-align:center">Watch Sashvik's special videos below:</p>
       <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/_fXemrttxfM" allowfullscreen></iframe>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/_fXemrttxfM" allowfullscreen></iframe>
+          <div class="video-title">Birthday Song 1</div>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/7H0zk6Gs3oY?list=RDe_04ZrNroTo" allowfullscreen></iframe>
+          <div class="video-title">Birthday Song 2</div>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/D3kEi9ghYrU?list=RDe_04ZrNroTo" allowfullscreen></iframe>
+          <div class="video-title">Birthday Song 3</div>
+        </div>
       </div>
     </section>
-
   </main>
 
   <footer>
     Made with ❤️ for Sashvik — Happy 1st Birthday!
   </footer>
 
-  <!-- Modal for gallery -->
   <div id="modal" class="modal" aria-hidden="true">
     <button class="modal-close" id="modalClose">Close ✕</button>
     <div class="modal-content" id="modalContent">
@@ -157,39 +127,27 @@
   </div>
 
   <script>
-    // Build gallery (1..12)
     const galleryGrid = document.getElementById('galleryGrid');
     for(let i=1;i<=12;i++){
-      const div = document.createElement('div');
+      const div=document.createElement('div');
       div.className='thumb';
-      div.innerHTML = `
-        <img src="images/month${i}.jpg" alt="Month ${i}" onerror="this.src='images/placeholder.png'" />
-        <div class="month-label">Month ${i}</div>
-      `;
-      div.addEventListener('click', ()=>openModal(i));
+      div.innerHTML=`<img src="images/month${i}.jpg" alt="Month ${i}" onerror="this.src='images/placeholder.png'"/><div class='month-label'>Month ${i}</div>`;
       galleryGrid.appendChild(div);
-    }
 
-    // Modal
-    const modal = document.getElementById('modal');
-    const modalImage = document.getElementById('modalImage');
-    const modalClose = document.getElementById('modalClose');
-    function openModal(i){
-      modalImage.src = `images/month${i}.jpg`;
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden','false');
-    }
-    modalClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
-    function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); modalImage.src=''; }
-
-    // Smooth scroll for nav
-    document.querySelectorAll('nav a').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const id = a.getAttribute('href').slice(1);
-        document.getElementById(id).scrollIntoView({behavior:'smooth'});
+      div.addEventListener('click',()=>{
+        document.getElementById('modalImage').src=`images/month${i}.jpg`;
+        document.getElementById('modal').classList.add('open');
       });
+    }
+
+    document.getElementById('modalClose').addEventListener('click',()=>{
+      document.getElementById('modal').classList.remove('open');
+    });
+
+    document.getElementById('modal').addEventListener('click',e=>{
+      if(e.target===document.getElementById('modal')){
+        document.getElementById('modal').classList.remove('open');
+      }
     });
   </script>
 </body>
