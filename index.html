@@ -247,7 +247,8 @@
   <div class="popup-content">
     <h1>🎂 Happy Birthday 🎂</h1>
     <h2>Sashvik</h2>
-    <button onclick="closePopup()">Enter Celebration 🎉</button>
+    <button onclick="startCelebration()">Enter Celebration 🎉</button>
+
   </div>
 
   <!-- Confetti -->
@@ -259,15 +260,13 @@
   <source src="sounds/birthday-pop.mp3" type="audio/mpeg">
 </audio>
 <script>
-  window.onload = () => {
+  function startCelebration(){
     const sound = document.getElementById("birthdaySound");
-    sound.volume = 0.7;
-    sound.play().catch(()=>{});
-  };
+    sound.currentTime = 0;
+    sound.volume = 0.8;
+    sound.play();
 
-  function closePopup(){
-    document.getElementById("birthdayPopup").style.display="none";
-    document.getElementById("birthdaySound").pause();
+    document.getElementById("birthdayPopup").style.display = "none";
   }
 </script>
 
