@@ -5,6 +5,81 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Happy 1st Birthday — Sashvik Prananthav</title>
   <style>
+/* 🎉 POPUP */
+.birthday-popup{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(45deg,#ff4d6d,#ffcc00,#6a4cff,#00d4ff);
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:bgMove 6s infinite alternate;
+}
+
+@keyframes bgMove{
+  0%{filter:hue-rotate(0deg);}
+  100%{filter:hue-rotate(360deg);}
+}
+
+.popup-content{
+  text-align:center;
+  color:white;
+  background:rgba(0,0,0,.3);
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+}
+
+.popup-content h1{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.popup-content h2{
+  font-size:60px;
+  font-family:'Brush Script MT',cursive;
+  animation:zoomText 1.5s infinite alternate;
+}
+
+@keyframes zoomText{
+  from{transform:scale(1);}
+  to{transform:scale(1.1);}
+}
+
+.popup-content button{
+  margin-top:20px;
+  padding:14px 28px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:#fff;
+  color:#ff4d6d;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* 🎆 CONFETTI */
+.confetti::before,
+.confetti::after{
+  content:'🎉 🎊 🎈 🎆 🎇';
+  position:absolute;
+  top:-10%;
+  left:0;
+  width:100%;
+  font-size:40px;
+  animation:fall 6s linear infinite;
+}
+
+.confetti::after{
+  animation-delay:3s;
+}
+
+@keyframes fall{
+  from{transform:translateY(0);}
+  to{transform:translateY(120vh);}
+}
+
     :root{
       --accent:#ff6b6b;
       --accent-2:#ffd166;
@@ -167,5 +242,34 @@
     document.getElementById('modalClose').onclick=()=>document.getElementById('modal').classList.remove('open');
     document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')document.getElementById('modal').classList.remove('open');};
   </script>
+<!-- 🎉 Birthday Popup -->
+<div id="birthdayPopup" class="birthday-popup">
+  <div class="popup-content">
+    <h1>🎂 Happy Birthday 🎂</h1>
+    <h2>Sashvik</h2>
+    <button onclick="closePopup()">Enter Celebration 🎉</button>
+  </div>
+
+  <!-- Confetti -->
+  <div class="confetti"></div>
+</div>
+
+<!-- Birthday Sound -->
+<audio id="birthdaySound" preload="auto">
+  <source src="sounds/birthday-pop.mp3" type="audio/mpeg">
+</audio>
+<script>
+  window.onload = () => {
+    const sound = document.getElementById("birthdaySound");
+    sound.volume = 0.7;
+    sound.play().catch(()=>{});
+  };
+
+  function closePopup(){
+    document.getElementById("birthdayPopup").style.display="none";
+    document.getElementById("birthdaySound").pause();
+  }
+</script>
+
 </body>
 </html>
